@@ -116,7 +116,7 @@ submitBtn.onclick = () => {
 checkAnswer.onclick = () => {
     const userAnswer = answerInput.value.trim().toUpperCase();
 
-    if (userAnswer === "SIGNAL") {
+    if (userAnswer === "CRIMSON") {
         feedback.innerText = "Correct answer";
     } else {
         feedback.innerText = "Incorrect. Try again";

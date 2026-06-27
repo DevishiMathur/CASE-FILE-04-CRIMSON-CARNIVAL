@@ -1,16 +1,19 @@
 {
   "name": "cryptic-hunt",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A merged Next.js shell for the cryptic hunt puzzle experiences.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
   "dependencies": {
-    "express": "^5.2.1"
+    "next": "^15.3.4",
+    "react": "^19.0.1",
+    "react-dom": "^19.0.1"
   }
 }

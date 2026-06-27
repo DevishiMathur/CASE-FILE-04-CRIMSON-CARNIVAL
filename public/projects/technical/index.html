@@ -347,6 +347,21 @@ XOR EAX, EBX</pre>
         },
       };
 
+      function markGameComplete() {
+        try {
+          const key = "case4.completedProjects";
+          const completed = JSON.parse(localStorage.getItem(key) || "[]");
+          if (!completed.includes("technical")) {
+            localStorage.setItem(key, JSON.stringify([...completed, "technical"]));
+          }
+        } catch {}
+
+        window.parent?.postMessage(
+          { type: "cryptic-hunt-complete", slug: "technical" },
+          window.location.origin
+        );
+      }
+
       function renderChallenges() {
         Object.keys(challenges).forEach((chKey) => {
           const ch = challenges[chKey];
@@ -407,6 +422,7 @@ XOR EAX, EBX</pre>
 
         if (totalCorrect === totalCount) {
           feedback.innerHTML = `<span style="color: var(--success);">🎯 COMPLETE SYSTEM MATCH: All ranges successfully synchronized. Perfect file accuracy.</span>`;
+          markGameComplete();
         } else {
           feedback.innerHTML = `<span style="color: #8892b0;">SYSTEM STATUS: Selections recorded for all 6 target ranges.</span>`;
         }

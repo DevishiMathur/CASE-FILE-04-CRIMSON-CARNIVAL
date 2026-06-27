@@ -109,6 +109,18 @@ const checkAnswer = document.getElementById("checkAnswer");
 const answerInput = document.getElementById("answerInput");
 const feedback = document.getElementById("feedback");
 
+function markGameComplete() {
+    try {
+        const key = "case4.completedProjects";
+        const completed = JSON.parse(localStorage.getItem(key) || "[]");
+        if (!completed.includes("audio-game")) {
+            localStorage.setItem(key, JSON.stringify([...completed, "audio-game"]));
+        }
+    } catch {}
+
+    window.parent?.postMessage({ type: "cryptic-hunt-complete", slug: "audio-game" }, window.location.origin);
+}
+
 submitBtn.onclick = () => {
     modal.classList.remove("hidden");
 };
@@ -118,6 +130,7 @@ checkAnswer.onclick = () => {
 
     if (userAnswer === "CRIMSON") {
         feedback.innerText = "Correct answer";
+        markGameComplete();
     } else {
         feedback.innerText = "Incorrect. Try again";
     }

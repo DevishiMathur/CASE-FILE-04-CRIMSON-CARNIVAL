@@ -11,6 +11,20 @@ const answers = {
   3: "RkFURSBXQVMgQUxSRUFEWSBXUklUVEVO" // FATE WAS ALREADY WRITTEN
 };
 
+const solvedAnswers = new Set();
+
+function markGameComplete() {
+  try {
+    const key = "case4.completedProjects";
+    const completed = JSON.parse(localStorage.getItem(key) || "[]");
+    if (!completed.includes("steganography")) {
+      localStorage.setItem(key, JSON.stringify([...completed, "steganography"]));
+    }
+  } catch {}
+
+  window.parent?.postMessage({ type: "cryptic-hunt-complete", slug: "steganography" }, window.location.origin);
+}
+
 function checkAnswer(questionNum) {
   const input = document.getElementById(`a${questionNum}`).value
     .trim()
@@ -26,6 +40,11 @@ function checkAnswer(questionNum) {
   if (input === correctAnswer) {
     result.innerText = "✓ Correct Answer";
     result.style.color = "lime";
+    solvedAnswers.add(questionNum);
+
+    if (solvedAnswers.size === Object.keys(answers).length) {
+      markGameComplete();
+    }
   } else {
     result.innerText = "✗ Incorrect. Try Again.";
     result.style.color = "red";

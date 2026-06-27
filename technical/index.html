@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Cryptic Shooting Range</title>
+    <style>
+      :root {
+        --bg-color: #0b0c10;
+        --card-bg: #1f2833;
+        --accent-color: red;
+        --text-color: #c5c6c7;
+        --code-bg: #0b0c10;
+        --wood-color: #3a2212;
+        --success: #2ecc71;
+        --error: #911d10;
+      }
+
+      body {
+        font-family: "Inter", "Roboto", "Helvetica Neue", Arial, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 30px;
+        border-bottom: 2px dashed #1f2833;
+        padding-bottom: 20px;
+        width: 100%;
+        max-width: 1100px;
+      }
+
+      h1 {
+        color: var(--accent-color);
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        margin: 0 0 10px 0;
+        font-size: 50px;
+      }
+
+      .section-container {
+        width: 100%;
+        max-width: 1100px;
+        background: #650404;
+        border: 1px solid #232b38;
+        border-radius: 10px;
+        padding: 20px;
+        margin-bottom: 35px;
+        box-sizing: border-box;
+      }
+
+      .section-title {
+        font-size: 1.3rem;
+        color: #fff;
+        border-left: 4px solid var(--accent-color);
+        padding-left: 10px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .level-badge {
+        font-size: 1rem;
+        padding: 3px 8px;
+        border-radius: 3px;
+        font-weight: bold;
+      }
+      .easy-bg {
+        background: #27ae60;
+        color: white;
+      }
+      .med-bg {
+        background: #d35400;
+        color: white;
+      }
+      .hard-bg {
+        background: #a464c0;
+        color: white;
+      }
+
+      .split-layout {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      @media (max-width: 900px) {
+        .split-layout {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .targets-box {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .target-card {
+        background: var(--wood-color);
+        color: #fff;
+        padding: 12px 15px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid #27160b;
+        box-shadow: 0 4px 0 #1b0f07;
+      }
+
+      .target-info {
+        font-size: 1rem;
+        line-height: 1.4;
+      }
+
+      .target-submit-btn {
+        background: rgba(0, 0, 0, 0.3);
+        color: var(--text-color);
+        border: 1px solid #232323;
+        padding: 8px 14px;
+        cursor: pointer;
+        font-family: inherit;
+        border-radius: 6px;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+
+      .target-submit-btn.selected {
+        background: var(--accent-color);
+        color: #000;
+        border-color: var(--accent-color);
+        box-shadow: 0 0 10px rgba(69, 243, 255, 0.5);
+      }
+
+      .code-box {
+        background: var(--code-bg);
+        border: 1px solid #232b38;
+        border-radius: 6px;
+        padding: 15px;
+        overflow-x: auto;
+      }
+
+      pre {
+        margin: 0;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #a9b7c6;
+      }
+
+      .comment {
+        color: #5f6368;
+        font-style: italic;
+      }
+      .keyword {
+        color: #cc7832;
+        font-weight: bold;
+      }
+      .number {
+        color: #6897bb;
+      }
+
+      .footer-terminal {
+        width: 100%;
+        max-width: 1100px;
+        background: #11141a;
+        border: 1px solid #232b38;
+        border-radius: 8px;
+        padding: 20px;
+        box-sizing: border-box;
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .global-msg {
+        font-size: 1.1rem;
+        font-weight: bold;
+        letter-spacing: 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>The Cryptic Shooting Range</h1>
+      <p style="margin: 5px 0 0 0; color: #8892b0">
+        Evaluate the variables and hit submit on the target you believe holds
+        the anomaly. No verification assistance is provided.
+      </p>
+    </header>
+
+    <h2
+      style="color: #fff; width: 100%; max-width: 1100px; margin-bottom: 10px"
+    >
+      RANGE ONE: NETWORK INTERFACES
+    </h2>
+
+    <div class="section-container">
+      <div class="section-title">
+        <span>Challenge 1: Subnet Boundary Drift</span>
+        <span class="level-badge easy-bg">EASY</span>
+      </div>
+      <div class="split-layout">
+        <div class="targets-box" id="targets-net-easy"></div>
+        <div class="code-box">
+          <pre><span class="comment"># SECURITY PROTOCOL BLOCK: Drop packets originating outside core segment</span>
+<span class="keyword">const</span> ALLOWED_MASK = 192.168.4.0/24;</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-container">
+      <div class="section-title">
+        <span>Challenge 2: Supernet Allocation Leak</span>
+        <span class="level-badge med-bg">MEDIUM</span>
+      </div>
+      <div class="split-layout">
+        <div class="targets-box" id="targets-net-med"></div>
+        <div class="code-box">
+          <pre><span class="comment">// Structural assignment boundaries inside target tracking routers</span>
+<span class="keyword">struct</span> Route { uint32_t net_id; uint8_t mask; };
+Route trap_zone = { 101080, 22 }; <span class="comment">// Resolves network ranges from 10.10.8.0 to 10.10.11.255</span></pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-container">
+      <div class="section-title">
+        <span>Challenge 3: DHCP Rogue Broadcast Matrix</span>
+        <span class="level-badge hard-bg">HARD</span>
+      </div>
+      <div class="split-layout">
+        <div class="targets-box" id="targets-net-hard"></div>
+        <div class="code-box">
+          <pre><span class="comment">// Host reservation logs for structural lease map: 172.16.32.0/20
+// Valid structural host pool bounds: 172.16.32.1 through 172.16.47.254</span></pre>
+        </div>
+      </div>
+    </div>
+
+    <h2
+      style="color: #fff; width: 100%; max-width: 1100px; margin-bottom: 10px"
+    >
+      RANGE TWO: COMPILER OPTIMIZATION TRAPS
+    </h2>
+
+    <div class="section-container">
+      <div class="section-title">
+        <span>Challenge 4: Line Counter Step</span>
+        <span class="level-badge easy-bg">EASY</span>
+      </div>
+      <div class="split-layout">
+        <div class="targets-box" id="targets-asm-easy"></div>
+        <div class="code-box">
+          <pre>MOV EAX, <span class="number">3</span>
+MOV EBX, <span class="number">0</span>
+RUN_LOOP:
+ADD EBX, <span class="number">5</span>
+DEC EAX
+JNZ RUN_LOOP</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-container">
+      <div class="section-title">
+        <span>Challenge 5: The Dead Branch Illusion</span>
+        <span class="level-badge med-bg">MEDIUM</span>
+      </div>
+      <div class="split-layout">
+        <div class="targets-box" id="targets-asm-med"></div>
+        <div class="code-box">
+          <pre>MOV EAX, <span class="number">10</span>
+MOV EBX, <span class="number">2</span>
+CMP EAX, <span class="number">10</span>
+JZ SKIP_BLOCK
+ADD EBX, <span class="number">20</span>
+SKIP_BLOCK:
+MUL EBX</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-container">
+      <div class="section-title">
+        <span>Challenge 6: Bitwise Obfuscation Matrix</span>
+        <span class="level-badge hard-bg">HARD</span>
+      </div>
+      <div class="split-layout">
+        <div class="targets-box" id="targets-asm-hard"></div>
+        <div class="code-box">
+          <pre>MOV EAX, 0x01
+SHL EAX, <span class="number">3</span>
+MOV EBX, 0x0A
+XOR EAX, EBX</pre>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-terminal">
+      <div class="global-msg" id="master-feedback" style="color: #8892b0">
+        SYSTEM STATUS: Awaiting input selections for all 6 target ranges...
+      </div>
+    </div>
+
+    <script>
+      const challenges = {
+        net_easy: {
+          correct: 2,
+          selected: null,
+          name: "net-easy",
+          targets: ["IP: 192.168.4.15", "IP: 192.168.4.250", "IP: 192.168.5.1"],
+        },
+        net_med: {
+          correct: 0,
+          selected: null,
+          name: "net-med",
+          targets: ["IP: 10.10.7.255", "IP: 10.10.9.14", "IP: 10.10.11.200"],
+        },
+        net_hard: {
+          correct: 1,
+          selected: null,
+          name: "net-hard",
+          targets: ["IP: 172.16.35.40", "IP: 172.16.47.255", "IP: 172.16.40.1"],
+        },
+        asm_easy: {
+          correct: 1,
+          selected: null,
+          name: "asm-easy",
+          targets: ["EAX = 5", "EBX = 15", "EBX = 0"],
+        },
+        asm_med: {
+          correct: 1,
+          selected: null,
+          name: "asm-med",
+          targets: ["EAX = 220", "EAX = 20", "EAX = 10"],
+        },
+        asm_hard: {
+          correct: 2,
+          selected: null,
+          name: "asm-hard",
+          targets: ["EAX = 18", "EAX = 8", "EAX = 2"],
+        },
+      };
+
+      function renderChallenges() {
+        Object.keys(challenges).forEach((chKey) => {
+          const ch = challenges[chKey];
+          const wrapper = document.getElementById(`targets-${ch.name}`);
+          wrapper.innerHTML = "";
+
+          ch.targets.forEach((targetText, index) => {
+            const card = document.createElement("div");
+            card.className = "target-card";
+            card.innerHTML = `
+                        <div class="target-info"><strong>TARGET [${String.fromCharCode(65 + index)}]</strong><br>${targetText}</div>
+                        <button class="target-submit-btn" id="btn-%chKey%-%index%" onclick="submitAnswer('%chKey%', %index%)">Submit</button>
+                    `
+              .replace(/%chKey%/g, chKey)
+              .replace(/%index%/g, index);
+            wrapper.appendChild(card);
+          });
+        });
+      }
+
+      function submitAnswer(chKey, index) {
+        const ch = challenges[chKey];
+        ch.selected = index;
+
+        ch.targets.forEach((_, idx) => {
+          const btn = document.getElementById(`btn-${chKey}-${idx}`);
+          btn.classList.remove("selected");
+          btn.textContent = "Submit";
+        });
+
+        const activeBtn = document.getElementById(`btn-${chKey}-${index}`);
+        activeBtn.classList.add("selected");
+        activeBtn.textContent = "Submitted";
+
+        checkGlobalProgress();
+      }
+
+      function checkGlobalProgress() {
+        let totalCorrect = 0;
+        let complete = true;
+        const totalCount = Object.keys(challenges).length;
+
+        Object.keys(challenges).forEach((chKey) => {
+          const ch = challenges[chKey];
+          if (ch.selected === null) {
+            complete = false;
+          } else if (ch.selected === ch.correct) {
+            totalCorrect++;
+          }
+        });
+
+        const feedback = document.getElementById("master-feedback");
+
+        if (!complete) {
+          feedback.innerHTML = `<span style="color: #8892b0;">SYSTEM STATUS: Recording selections. Keep testing lines...</span>`;
+          return;
+        }
+
+        if (totalCorrect === totalCount) {
+          feedback.innerHTML = `<span style="color: var(--success);">🎯 COMPLETE SYSTEM MATCH: All ranges successfully synchronized. Perfect file accuracy.</span>`;
+        } else {
+          feedback.innerHTML = `<span style="color: #8892b0;">SYSTEM STATUS: Selections recorded for all 6 target ranges.</span>`;
+        }
+      }
+
+      renderChallenges();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Escape The Loop</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>ESCAPE THE LOOP</h1>
+        <p class="clue">“The song remains the same. The signal does not.”</p>
+      </div>
+
+      <div class="main-layout">
+        <!-- LEFT PANEL -->
+        <div class="left-panel">
+          <div class="screen-container">
+            <canvas id="canvas"></canvas>
+
+            <div class="audio-container">
+              <audio id="audio" controls>
+                <source src="signal.mp3" type="audio/mpeg" />
+              </audio>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT PANEL -->
+        <div class="right-panel">
+          <div class="control-card">
+            <label for="freqSlider">Frequency Mapping</label>
+            <input
+              type="range"
+              id="freqSlider"
+              min="1"
+              max="5"
+              step="0.1"
+              value="1"
+            />
+            <div class="slider-value" id="freqValue">1.0</div>
+          </div>
+
+          <div class="control-card">
+            <label for="gainSlider">Gain Amplification</label>
+            <input
+              type="range"
+              id="gainSlider"
+              min="0.5"
+              max="3"
+              step="0.1"
+              value="1"
+            />
+            <div class="slider-value" id="gainValue">1.0</div>
+          </div>
+
+          <div class="control-card">
+            <label for="noiseSlider">Noise Reduction</label>
+            <input type="range" id="noiseSlider" min="0" max="100" value="0" />
+            <div class="slider-value" id="noiseValue">0</div>
+          </div>
+
+          <!-- NEW BUTTON -->
+          <button id="submitBtn">SUBMIT ANSWER</button>
+        </div>
+      </div>
+
+      <div id="status"></div>
+    </div>
+
+    <!-- MODAL -->
+    <div id="answerModal" class="modal hidden">
+      <div class="modal-box">
+        <h2>ENTER THE WORD</h2>
+        <input type="text" id="answerInput" placeholder="Type here..." />
+        <button id="checkAnswer">VERIFY</button>
+        <p id="feedback"></p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

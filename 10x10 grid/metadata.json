@@ -1,0 +1,6 @@
+{
+  "name": "Broken Ticket",
+  "description": "Find the broken ticket, solve the QR code puzzle, and enter the mystery word to reveal the path.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  background: black;
+  color: white;
+  font-family:  "Inter", "Helvetica Neue", "Arial", sans-serif;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 30px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+h1 {
+  color: crimson;
+  font-size: 4rem;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.clue {
+  color: rgb(229, 188, 188);
+  font-style: italic;
+}
+
+.question {
+  margin-bottom: 50px;
+  padding: 20px;
+  border: 1px solid #333;
+  background: #111;
+}
+
+.main-image {
+  width: 100%;
+  max-width: 500px;
+  display: block;
+  margin-top: 20px;
+}
+
+.answer-box {
+  text-align: center;
+  margin-top: 40px;
+}
+
+input {
+  padding: 12px;
+  width: 250px;
+  font-size: 16px;
+}
+
+button {
+  padding: 12px 20px;
+  margin-left: 10px;
+  cursor: pointer;
+  background: crimson;
+  border: none;
+  color: white;
+}
+
+#result {
+  margin-top: 20px;
+  font-size: 20px;
+}

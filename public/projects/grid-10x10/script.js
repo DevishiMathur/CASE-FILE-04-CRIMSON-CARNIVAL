@@ -15,6 +15,18 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app, "ai-studio-9e71cb0f-bd4b-4e61-98ec-bb0abdd53047");
 
+function markGameComplete() {
+  try {
+    const key = "case4.completedProjects";
+    const completed = JSON.parse(localStorage.getItem(key) || "[]");
+    if (!completed.includes("grid-10x10")) {
+      localStorage.setItem(key, JSON.stringify([...completed, "grid-10x10"]));
+    }
+  } catch {}
+
+  window.parent?.postMessage({ type: "cryptic-hunt-complete", slug: "grid-10x10" }, window.location.origin);
+}
+
 // ── GRID CONSTANTS ──
 const GRID  = 10;           // 10×10
 const TOTAL = GRID * GRID;  // 100 pieces
@@ -554,6 +566,7 @@ function goToStage(targetStage) {
   } else if (stage === 'victory') {
     document.getElementById('screen-victory').classList.remove('hidden');
     document.getElementById('victory-team-badge').innerText = `🏆 Team ${teamName.toUpperCase()} finalized in ${formatTime(secondsElapsed)}!`;
+    markGameComplete();
     stopTimer();
     loadLeaderboard();
   }
